@@ -24,7 +24,6 @@ final class Brand implements Owner
 {
     public const TITLE = 'brand.title';
     public const TITLE_ACCENT = 'brand.title_accent';
-    public const TITLE_ENDING = 'brand.title_ending';
     public const LOGO = 'brand.logo';
     public const LOGO_DARK = 'brand.logo_dark';
     public const LOGO_TITLE = 'brand.logo_title';
@@ -56,7 +55,6 @@ final class Brand implements Owner
         return [
             new Field(self::TITLE, t('core.setting.title'), page: Page::Brand),
             new Field(self::TITLE_ACCENT, t('core.setting.title_accent'), page: Page::Brand),
-            new Field(self::TITLE_ENDING, t('core.setting.title_ending'), page: Page::Brand),
             self::logoField(),
             self::darkLogoField(),
             new Field(self::LOGO_TITLE, t('core.setting.logo_title'), Type::Toggle, page: Page::Brand),
@@ -78,13 +76,6 @@ final class Brand implements Owner
     public function title(): string
     {
         return $this->settings->get(self::TITLE);
-    }
-
-    public function titleEnding(): string
-    {
-        $ending = $this->settings->get(self::TITLE_ENDING);
-
-        return '' === $ending ? '' : ' '.$ending;
     }
 
     /** @return array{string, string, string} */
